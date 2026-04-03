@@ -1,0 +1,283 @@
+# ============================ Workspace ============================
+
+Workspace:
+
+  name: REACT REFERENCE | Task App
+  
+  learning_from:
+    - Fazt Code: https://www.youtube.com/watch?v=rLoWMU4L_qE
+    - Official Documentation: https://react.dev/learn
+
+  repositories:
+    react_reference:
+      role: frontend
+      stack: [React, Vite, JavaScript]
+
+# ============================ 5 PASOS INICIALES ============================
+1. **Planificación**: Define objetivos, funcionalidades y diseño del proyecto.
+2. **Configuración**: Configura Git, estructura de carpetas e instala dependencias. (Revisar : NPM Scripts)
+3. **Desarrollo**: Desarrolla features siguiendo el flujo (feature -> dev -> main).
+4. **Pruebas**: Pruebas unitarias y revisión de código mediante pull requests.
+5. **Deploy**: Despliega y recopila feedback de usuarios.
+# ============================ Learning Path ============================
+
+
+## 🗂️ Ruta de estudio detallada con timestamps
+
+Esta es la secuencia completa del curso con referencias de tiempo exacto en el video para que puedas avanzar paso a paso:
+
+### Introducción y Configuración (00:00 - 12:22)
+- `00:00` — Introducción al curso de React
+- `00:48` — Requerimientos del sistema
+- `02:01` — Qué es React y cómo funciona
+- `03:24` — Entorno de desarrollo para React
+- `06:53` — Crear proyecto con Create React App
+- `12:22` — Estructura del proyecto
+
+### Conceptos Básicos (21:33 - 38:34)
+- `21:33` — Hola Mundo en React
+- `29:21` — Componentes de React
+- `32:56` — Tu primer componente
+- `38:34` — JSX (sintaxis de React)
+
+### Módulos ES6 (52:49 - 01:03:37)
+- `52:49` — EcmaScript y JavaScript Modules
+- `01:01:38` — Extensión .jsx
+- `01:03:37` — React Props (paso de datos)
+
+### Props y Estilos (01:22:21 - 01:50:49)
+- `01:22:21` — PropTypes y defaultProps
+- `01:36:31` — Estilos en React
+- `01:50:49` — Tipos de componentes
+
+### Eventos y Hooks Básicos (01:54:34 - 02:55:19)
+- `01:54:34` — Event Handlers (manejadores de eventos)
+- `02:08:51` — Fetch API (consumo de datos)
+- `02:16:04` — Librerías terceras (react-icons)
+- `02:23:02` — Arrays en React
+- `02:36:05` — React Hooks introducción
+- `02:38:52` — useState (estado local)
+- `02:55:19` — useEffect (efectos secundarios)
+
+### Proyecto Práctico: Todo App (03:02:28 - 03:52:12)
+- `03:02:28` — Crear primera aplicación Todo con Vite
+- `03:14:24` — Mostrar lista de tareas
+- `03:24:15` — Añadir tareas desde formulario
+- `03:43:03` — Separar en componentes reutilizables
+- `03:52:12` — Eliminar tareas
+
+### Estado Global y Despliegue (04:04:12 - 04:42:24)
+- `04:04:12` — Crear contexto global
+- `04:20:35` — useContext (consumir contexto)
+- `04:30:04` — TailwindCSS para estilos
+- `04:42:24` — Despliegue en Github Pages
+
+
+# ============================ Git Flow =============================
+
+Git-Flow:
+  applies_to: Cada repositorio por separado.
+
+  git:
+    description: Los comandos Git se ejecutan dentro de cada repositorio, no en la raiz.
+
+  branches:
+    main:
+      role: produccion
+      rules:
+        - Solo contiene codigo estable.
+        - No se trabaja directamente aqui.
+        - Recibe cambios desde dev o hotfix/*.
+
+    dev:
+      role: integracion
+      rules:
+        - Todas las features nacen desde dev.
+        - Los bugfix tambien nacen desde dev.
+        - Cuando dev esta estable se fusiona hacia main.
+
+    feature:
+      info: feature = fase del proyecto
+      origin: dev (se creade dele dev)
+      pattern: feature/${NAME}
+      examples:
+        - feature/ Que es React
+        - feature/ Hola Mundo en React
+
+
+    bugfix:
+      pattern: bugfix/${NAME}
+      target: dev
+      examples:
+        - bugfix/formulario-no-funciona
+
+
+    hotfix:
+      pattern: hotfix/${NAME}
+      source: main
+      targets:
+        - main
+        - dev
+      examples:
+        - hotfix/security-error
+        - hotfix/correccion-critica
+
+  commit_convention:
+    format: "type: descripcion corta"
+    types:
+      - feat -> nueva funcionalidad
+      - fix -> correccion de bug
+      - docs  -> cambios en la documentacion
+      - refactor  -> cambios en el codigo que no afectan funcionalidad
+      - chore -> tareas de mantenimiento (config, scripts, etc)
+      - test  -> cambios relacionados con pruebas
+
+  commands:
+    list_branches:
+      description: Listar ramas y limpiar referencias remotas.
+      steps:
+        - git fetch --all --prune
+        - git branch -a
+        - git log --oneline --graph --decorate --all
+
+    create_feature:
+      description: Crear una feature desde dev.
+      steps:
+        - git checkout dev
+        - git pull origin dev
+        - git checkout -b feature/${NAME}
+        - git push -u origin feature/${NAME}
+
+    create_bugfix:
+      description: Crear un bugfix desde dev.
+      steps:
+        - git checkout dev
+        - git pull origin dev
+        - git checkout -b bugfix/${NAME}
+        - git push -u origin bugfix/${NAME}
+
+    create_hotfix:
+      description: Crear un hotfix desde main.
+      steps:
+        - git checkout main
+        - git pull origin main
+        - git checkout -b hotfix/${NAME}
+        - git push -u origin hotfix/${NAME}
+
+    merge_feature_into_dev:
+      description: Fusionar una feature en dev.
+      steps:
+        - git checkout dev
+        - git pull origin dev
+        - git merge feature/${NAME}
+        - git push origin dev
+
+    merge_bugfix_into_dev:
+      description: Fusionar un bugfix en dev.
+      steps:
+        - git checkout dev
+        - git pull origin dev
+        - git merge bugfix/${NAME}
+        - git push origin dev
+
+    merge_dev_into_main:
+      description: Publicar a produccion desde dev.
+      steps:
+        - git checkout main
+        - git pull origin main
+        - git merge dev
+        - git push origin main
+
+# ============================ NPM Scripts ==========================
+
+Npm_Scripts:
+
+    development:
+      dev: vite # Inicia el servidor de desarrollo con recarga en caliente
+      start: vite # Alias de dev para mantener convenciones
+      preview: vite preview # Previsualiza la build generada
+
+    build:
+      build: vite build # Compila la aplicación para producción
+      serve: vite preview # Sirve la build compilada en local
+      clean: rimraf dist # Limpia la carpeta dist antes de una nueva build
+
+    testing:
+      test: vitest # Ejecuta los tests unitarios
+      test_watch: vitest --watch # Ejecuta tests en modo vigilancia
+      test_coverage: vitest run --coverage # Genera reporte de cobertura
+      test_e2e: playwright test # Tests end to end
+
+    quality:
+      lint: eslint . --ext .js,.jsx # Analiza el código
+      lint_fix: eslint . --fix # Corrige errores automáticamente
+      format: prettier --write . # Formatea el código
+
+    security:
+      sanitize: npm-sanitize --scripts # Valida y sanitiza scripts contra inyecciones
+      check_inputs: node --check-inputs # Verifica inputs de seguridad
+      prevent_injection: npm audit --audit-level=moderate # Audita vulnerabilidades de inyección
+      ignore_scripts: npm install --ignore-scripts # Instala sin ejecutar scripts para evitar riesgos
+
+    dependencies:
+      deps_audit: npm audit # Escanea vulnerabilidades
+      deps_update: npm-check -u # Actualiza dependencias
+      deps_outdated: npm outdated # Lista dependencias desactualizadas
+
+    docs_and_analysis:
+      analyze: source-map-explorer dist/*.js # Analiza tamaño del bundle
+      env: node -p "process.env" # Muestra variables de entorno
+
+    deploy:
+      deploy: gh-pages -d dist # Despliega en GitHub Pages
+      vercel: vercel --prod # Despliega en Vercel
+      netlify: netlify deploy --prod # Despliega en Netlify
+
+    maintenance:
+      check: npm run lint && npm test # Ejecuta validaciones antes de subir cambios
+      prepare: husky install # Inicializa hooks de Git con Husky
+
+
+# ========================= HTTP Status ==========================
+
+## 2xx - Éxito
+
+| Código | Significado | Uso                           |
+| ------ | ----------- | ----------------------------- |
+| `200`  | OK          | Request exitoso con respuesta |
+| `201`  | Created     | Recurso creado exitosamente   |  
+| `204`  | No Content  | Operación exitosa sin body    |
+
+## 3xx - Redirección
+
+| Código | Significado       | Uso                        |
+| ------ | ----------------- | -------------------------- |
+| `301`  | Moved Permanently | URL movida permanentemente |
+| `302`  | Found             | Redirección temporal       |
+| `304`  | Not Modified      | Recurso no ha cambiado     |
+
+## 4xx - Error del Cliente
+
+| Código | Significado          | Uso                                    |
+| ------ | -------------------- | -------------------------------------- |
+| `400`  | Bad Request          | Datos mal formados o falta un campo    |
+| `401`  | Unauthorized         | Autenticación requerida                |
+| `403`  | Forbidden            | Acceso denegado (sin permisos)         |
+| `404`  | Not Found            | Ruta o recurso no existe               |
+| `422`  | Unprocessable Entity | Datos válidos pero no cumplen contrato |
+
+## 5xx - Error del Servidor
+
+| Código | Significado           | Uso                                  |
+| ------ | --------------------- | ------------------------------------ |
+| `500`  | Internal Server Error | Error interno del backend            |
+| `502`  | Bad Gateway           | Servidor no disponible               |
+| `503`  | Service Unavailable   | Servicio temporalmente no disponible |
+
+## Referencia Rápida - MVP
+
+- **MVP actual usa**: `200`, `400`, `404`, `500`
+- **Futuro con auth**: `201`, `401`, `403`, `422`
+
+
+# ================================================================
