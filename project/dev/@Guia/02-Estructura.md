@@ -1,5 +1,31 @@
 # Estructura Basica de React (en este proyecto)
 
+---
+## Índice de Contenidos
+- [Estructura Basica de React (en este proyecto)](#estructura-basica-de-react-en-este-proyecto)
+  - [Que hace cada carpeta](#que-hace-cada-carpeta)
+    - [src/](#src)
+    - [public/](#public)
+    - [node_modules/](#node_modules)
+    - [build/](#build)
+    - [project/](#project)
+  - [Que hace cada archivo (raiz)](#que-hace-cada-archivo-raiz)
+    - [package.json](#packagejson)
+    - [package-lock.json](#package-lockjson)
+    - [.gitignore](#gitignore)
+    - [README.md](#readmemd)
+  - [Que hace cada archivo de public/](#que-hace-cada-archivo-de-public)
+    - [public/index.html](#publicindexhtml)
+    - [public/manifest.json](#publicmanifestjson)
+    - [public/robots.txt](#publicrobotstxt)
+    - [public/favicon.ico](#publicfaviconico)
+    - [public/logo192.png y public/logo512.png](#publiclogo192png-y-publiclogo512png)
+  - [Que hace cada archivo de src/](#que-hace-cada-archivo-de-src)
+    - [src/index.js](#srcindexjs)
+    - [src/App.js](#srcappjs)
+
+---
+
 Este proyecto usa **Create React App (CRA)**.  
 La estructura que tienes hoy es esta:
 

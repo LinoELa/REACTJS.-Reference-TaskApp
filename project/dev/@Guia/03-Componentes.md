@@ -2,6 +2,18 @@
 
 # 03 - Componentes en React
 
+---
+## Índice de Contenidos
+- [03 - Componentes en React](#03---componentes-en-react)
+  - [¿Qué son los Componentes?](#qué-son-los-componentes)
+  - [El Componente Root](#el-componente-root)
+  - [Componentes Funcionales](#componentes-funcionales)
+    - [Ejemplo básico](#ejemplo-básico)
+  - [Props (Propiedades)](#props-propiedades)
+    - [Ejemplo de uso de props](#ejemplo-de-uso-de-props)
+
+---
+
 ## ¿Qué son los Componentes?
 
 Los componentes son partes reutilizables de la interfaz que encapsulan su propia lógica y estilos. En React, los componentes pueden ser funcionales o de clase, pero en esta guía nos enfocaremos en los **componentes funcionales**, que son más modernos y fáciles de entender.

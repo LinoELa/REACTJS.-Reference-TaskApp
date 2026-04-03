@@ -1,5 +1,23 @@
 # Introducción a React
 
+---
+## Índice de Contenidos
+- [Introducción a React](#introducción-a-react)
+  - [¿Qué es React?](#qué-es-react)
+    - [Características Principales](#características-principales)
+  - [Conceptos Clave](#conceptos-clave)
+    - [JSX](#jsx)
+    - [Componentes](#componentes)
+    - [Props](#props)
+    - [State (Estado)](#state-estado)
+    - [Hooks](#hooks)
+  - [Ventajas de React](#ventajas-de-react)
+  - [Ecosystem Relacionado](#ecosystem-relacionado)
+  - [Instalación Básica](#instalación-básica)
+  - [Primeros Pasos](#primeros-pasos)
+
+---
+
 ## ¿Qué es React?
 
 React es una biblioteca de JavaScript desarrollada por Facebook para construir interfaces de usuario (UI) de forma eficiente y reactiva. Se utiliza para crear aplicaciones web modernas y rápidas mediante componentes reutilizables.

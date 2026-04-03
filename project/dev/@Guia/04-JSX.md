@@ -1,5 +1,24 @@
 # 04 - JSX en React
 
+---
+## Índice de Contenidos
+- [04 - JSX en React](#04---jsx-en-react)
+  - [¿Qué es JSX?](#qué-es-jsx)
+    - [Ejemplo básico](#ejemplo-básico)
+  - [Características de JSX](#características-de-jsx)
+    - [1. Sintaxis Similar a HTML](#1-sintaxis-similar-a-html)
+    - [2. Expresiones JavaScript en JSX](#2-expresiones-javascript-en-jsx)
+    - [3. Atributos en JSX](#3-atributos-en-jsx)
+    - [4. Elementos Anidados](#4-elementos-anidados)
+    - [5. Reglas Importantes](#5-reglas-importantes)
+  - [Fragments en JSX](#fragments-en-jsx)
+    - [¿Por qué usar Fragments?](#por-qué-usar-fragments)
+    - [Sintaxis de Fragments](#sintaxis-de-fragments)
+      - [1. Sintaxis Corta <>](#1-sintaxis-corta-)
+      - [2. React.Fragment explícito](#2-reactfragment-explícito)
+
+---
+
 ## ¿Qué es JSX?
 
 JSX (JavaScript XML) es una extensión de sintaxis para JavaScript que permite escribir código similar a HTML dentro de archivos JavaScript. Es una forma de describir la estructura de la interfaz de usuario (UI) de manera **declarativa y legible**.

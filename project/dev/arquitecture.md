@@ -4,7 +4,35 @@
 
 ---
 
-## 📋 Resumen ejecutivo
+## � Índice de Contenidos
+
+- [Arquitectura: Task App con React](#arquitectura-task-app-con-react)
+  - [� Índice de Contenidos](#-índice-de-contenidos)
+  - [�📋 Resumen ejecutivo](#-resumen-ejecutivo)
+  - [📁 Estructura de carpetas](#-estructura-de-carpetas)
+  - [🎯 Responsabilidad de cada carpeta](#-responsabilidad-de-cada-carpeta)
+    - [`components/`](#components)
+    - [`hooks/`](#hooks)
+    - [`services/`](#services)
+    - [`context/`](#context)
+  - [🔄 Flujo de datos](#-flujo-de-datos)
+    - [Fase 1: Estado local en App.js](#fase-1-estado-local-en-appjs)
+    - [Fase 2: Estado global con Context](#fase-2-estado-global-con-context)
+  - [📐 Principios de diseño](#-principios-de-diseño)
+    - [1. **Componentes pequeños y enfocados**](#1-componentes-pequeños-y-enfocados)
+    - [2. **Props descendentes**](#2-props-descendentes)
+    - [3. **Lógica separada de renderizado**](#3-lógica-separada-de-renderizado)
+    - [4. **Escalable hacia Context API**](#4-escalable-hacia-context-api)
+  - [🛠️ Decisiones técnicas](#️-decisiones-técnicas)
+  - [📝 Nomenclatura del proyecto](#-nomenclatura-del-proyecto)
+    - [Regla General (por defecto)](#regla-general-por-defecto)
+  - [📌 Aplicación práctica en TaskApp](#-aplicación-práctica-en-taskapp)
+  - [🚀 Roadmap de refactorización](#-roadmap-de-refactorización)
+  - [📚 Referencia rápida](#-referencia-rápida)
+
+---
+
+## �📋 Resumen ejecutivo
 
 | Aspecto                  | Detalle                             |
 | ------------------------ | ----------------------------------- |
@@ -227,28 +255,43 @@ function Container() {
 
 ---
 
-## 📝 Convenciones de nombres
+## 📝 Nomenclatura del proyecto
 
-| Tipo                    | Formato             | Ejemplo                         |
-| ----------------------- | ------------------- | ------------------------------- |
-| Archivos de componentes | `PascalCase.js`     | `TaskForm.js`, `TaskItem.js`    |
-| Archivos de hooks       | `camelCase.js`      | `useTasks.js`                   |
-| Archivos de servicios   | `camelCase.js`      | `taskService.js`                |
-| Funciones               | `camelCase()`       | `addTask()`, `toggleTask()`     |
-| Variables booleanas     | `is` o `has` prefix | `isCompleted`, `hasItems`       |
-| Manejadores de eventos  | `on` + Acción       | `onDelete`, `onToggle`, `onAdd` |
+### Regla General (por defecto)
+
+| Formato            | Uso/Tipo                                             | Ejemplos en TaskApp                                                              |
+| ------------------ | ---------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `camelCase`        | Variables, funciones, hooks, servicios, helpers      | `taskList`,`addTask()`,`useTasks`,`taskService`, `formatTask`, `validateTask`    |
+| `PascalCase`       | Componentes React, contextos, tipos, clases          | `TaskForm`, `TaskItem`, `TaskList`, `TaskContext`, `TaskProvider`                |
+| `kebab-case`       | Carpetas y módulos                                   | `src/components/`, `src/hooks/`, `src/services/`, `src/context/`                 |
+| `UPPER_SNAKE_CASE` | Constantes globales del proyecto                     | `MAX_TASKS`, `TASK_STATUS_PENDING`, `TASK_STATUS_COMPLETED`, `LOCAL_STORAGE_KEY` |
+| `snake_case`       | Propiedades de APIs/datos externos (si es requerido) | `task_id`, `created_at`, `updated_at` (cuando vienen de una API)                 |
+| `is`/`has` prefix  | Variables booleanas                                  | `isCompleted`, `hasItems`, `isLoading`, `hasError`                               |
+| `on` + Acción      | Manejadores de eventos (funciones callback)          | `onDelete`, `onToggle`, `onAdd`, `onChange`, `onSubmit`                          |
 
 ---
 
-## ✅ Checklist para el desarrollo
+## 📌 Aplicación práctica en TaskApp
 
-Cuando agregues una nueva feature, verifica:
-
-- ☐ ¿El componente es pequeño y enfocado? (máx ~50 líneas)
-- ☐ ¿La lógica está en `useTasks` o `taskService`, no en el componente?
-- ☐ ¿Los props tienen nombres claros (`onDelete`, `task`)?
-- ☐ ¿Probaste el componente en el navegador?
-- ☐ ¿Documentaste cambios en este archivo si es estructura nueva?
+| Elemento                      | Nombre              | Tipo                          |
+| ----------------------------- | ------------------- | ----------------------------- |
+| Componente principal          | `TaskForm`          | `PascalCase`                  |
+| Componente de elemento        | `TaskItem`          | `PascalCase`                  |
+| Componente de lista           | `TaskList`          | `PascalCase`                  |
+| Hook personalizado            | `useTasks`          | `camelCase` con prefijo `use` |
+| Servicio de datos             | `taskService`       | `camelCase`                   |
+| Contexto global               | `TaskContext`       | `PascalCase`                  |
+| Función para agregar          | `addTask()`         | `camelCase`                   |
+| Función para alternar         | `toggleTask()`      | `camelCase`                   | **** |
+| Función para eliminar         | `deleteTask()`      | `camelCase`                   |
+| Variable de tareas            | `tasks`             | `camelCase`                   |
+| Variable booleana             | `isCompleted`       | `camelCase` con prefijo `is`  |
+| Manejador de borrado          | `onDelete`          | `on` + Acción                 |
+| Constante: clave localStorage | `LOCAL_STORAGE_KEY` | `UPPER_SNAKE_CASE`            |
+| Constante: máximo de tareas   | `MAX_TASKS_ALLOWED` | `UPPER_SNAKE_CASE`            |
+| Carpeta de componentes        | `components/`       | `kebab-case`                  |
+| Carpeta de hooks              | `hooks/`            | `kebab-case`                  |
+| Carpeta de servicios          | `services/`         | `kebab-case`                  |
 
 ---
 
