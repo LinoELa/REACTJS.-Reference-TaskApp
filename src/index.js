@@ -1,18 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+import { TasksCardComponent, TasksReadyComponent } from "./Tasks";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-function App() {
-  return (
-    <div>
-      <h1>Hola, Mundo!</h1>
-      <p>Bienvenido a tu aplicación React.</p>
-    </div>
-  );
-}
+root.render(
+  <div className="tasks-layout">
+    {/* Renderizamos el componente TasksCard con una lista de tareas de ejemplo */}
+    <TasksCardComponent
+      tasks={[
+        { id: 1, title: "Task 1" },
+        { id: 2, title: "Task 2" },
+        { id: 3, title: "Task 3" },
+      ]}
+    />
 
-root.render(<App />);
+    {/* Componente de estado de tarea */}
+    <TasksReadyComponent ready={true} />
+  </div>
+);
 
 // sHIFT + ALT + A comentar en  linea asi
 
