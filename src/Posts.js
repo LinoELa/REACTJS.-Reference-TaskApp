@@ -1,4 +1,4 @@
-//  ======================= POSTS COMPONENT ==================================
+//  ======================= NOTES ==================================
 
 /**
  * Archivo: Posts.js
@@ -15,6 +15,8 @@
  */
 import { useState } from "react";
 
+
+//  ======================= COMPONENT ==================================
 export const PostsComponent = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);

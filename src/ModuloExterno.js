@@ -1,15 +1,25 @@
-//  =========== IMPORTS ============
+// ======================= NOTES ==================================
 
-import { FaGlobeAmericas } from "react-icons/fa";
-//  =========== USO MODULO EXTERNO ============
 /**
  * Archivo: ModuloExterno.js
  *
-
+ * Este archivo demuestra el uso de librerías externas (third-party modules).
  *
- * @PostsComponent - Componente funcional que usa async/await y useState para manejar datos de la API.
+ * El componente:
+ * - Importa iconos de la librería react-icons (Font Awesome)
+ * - Renderiza un botón con un icono integrado
+ * - Ejecuta un fetch al hacer click en el botón
+ * - Muestra los resultados en la consola
+ *
+ * @ExternoComponent - Componente funcional que demuestra módulos externos e iconos
  *
  */
+
+// ======================= IMPORTS ============
+
+import { FaGlobeAmericas } from "react-icons/fa";
+
+// ======================= COMPONENT ============
 
 export const ExternoComponent = () => {
   return (
@@ -22,9 +32,34 @@ export const ExternoComponent = () => {
             .catch((error) => console.error("Error fetching posts:", error));
         }}
       >
-        {/* Aquí podrías agregar un icono de React Icons si lo deseas */}
         <FaGlobeAmericas /> Traer datos
       </button>
     </div>
   );
 };
+
+// ======================= NOTAS ==================================
+
+/**
+ * CONCEPTOS CLAVE: Librerías Externas y React Icons
+ *
+ * CARACTERÍSTICAS:
+ * - Importación de icono Font Awesome desde react-icons
+ * - Componente simple con un botón y evento onClick
+ * - Uso de fetch API para obtener datos
+ * - Manejo de promesas con .then() y .catch()
+ * - Icono renderizado junto al texto del botón
+ *
+ * IMPLEMENTACIONES APLICADAS:
+ * - react-icons: librería de +20k iconos disponibles
+ * - Font Awesome (FaGlobeAmericas): icono específico del set FA
+ * - Fetch API: realiza petición GET a un endpoint mock
+ * - Promesas encadenadas: .then() para procesar respuesta
+ * - Error handling: .catch() para capturar errores
+ * - Console logging: debug en DevTools (F12)
+ *
+ * LIBRERÍAS USADAS:
+ * - react-icons: proporciona componentes de iconos listos para usar
+ *   Instalación: npm install react-icons --save
+ *   Documentación: https://react-icons.github.io/react-icons/
+ */

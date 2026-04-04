@@ -33,3 +33,24 @@ export function ButtonComponent({ text, name = "", onClick }) {
     </button>
   );
 }
+
+// ======================= NOTAS ==================================
+
+/**
+ * CONCEPTOS CLAVE: Props y Event Handlers
+ *
+ * CARACTERÍSTICAS:
+ * - Componente funcional reutilizable que acepta props (text, name, onClick)
+ * - Props desestructuradas en la firma de la función
+ * - Valor por defecto para la prop `name` (empty string)
+ * - Event handler onClick recibido desde el componente padre
+ *
+ * IMPLEMENTACIONES APLICADAS:
+ * - Composición: componente diseñado para ser reutilizable en múltiples lugares
+ * - Props drilling: el evento onClick se pasa desde index.js
+ * - Default parameters: `name = ""` para evitar undefined
+ * - Aplicación de clase CSS para estilos consistentes
+ *
+ * USO:
+ * <ButtonComponent text="Mi Botón" name="btn1" onClick={handleClick} />
+ */

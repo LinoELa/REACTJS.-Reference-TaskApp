@@ -160,7 +160,46 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(<App />);
 
-// ================ SHORTCUTS ================
+// ======================= NOTAS ==================================
+
+/**
+ * CONCEPTOS CLAVE: Punto de Entrada y Composición de Componentes
+ *
+ * CARACTERÍSTICAS:
+ * - index.js: punto de entrada de la aplicación React
+ * - Importación de todos los componentes reutilizables
+ * - Componente App principal que renderiza todo
+ * - Múltiples event handlers definidos en el nivel superior
+ * - Composición de componentes originales + ejemplos de handlers
+ *
+ * IMPLEMENTACIONES APLICADAS:
+ * - ReactDOM.createRoot(): crea raíz de React en el DOM
+ * - root.render(): renderiza el componente en el elemento #root
+ * - Props drilling: paso de handlers a componentes hijos
+ * - Manejo de estado local con useState (posts, emails, etc)
+ * - Event handlers múltiples: onChange, onSubmit, onClick
+ * - Composición: combina 8+ componentes en una sola App
+ *
+ * ESTRUCTURA JERÁRQUICA:
+ * App
+ * ├── TasksCardComponent
+ * ├── TasksReadyComponent
+ * ├── Saludar
+ * ├── ButtonComponent (con onClick)
+ * ├── Input (onChange)
+ * ├── Form básico (onSubmit)
+ * ├── Form completo (onChange + onSubmit)
+ * ├── PostsComponent (fetch async)
+ * ├── ExternoComponent (icons + fetch)
+ * └── UserArrayComponent (arrays + map)
+ *
+ * PUNTOS IMPORTANTES:
+ * - Este es el punto único de entrada de la aplicación
+ * - Todos los componentes se renderizan aquí
+ * - Los handlers se definen a nivel de App y se pasan a hijos
+ * - Es donde se controla el flujo general de la aplicación
+ * - Conexión con el DOM real a través del id="root" en HTML
+ */
 
 // COMENTAR UNA LÍNEA: Shift + Alt + A
 

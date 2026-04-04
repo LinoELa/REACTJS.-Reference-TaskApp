@@ -38,3 +38,27 @@ export class Saludar extends Component {
   }
 }
  */
+
+// ======================= NOTAS ==================================
+
+/**
+ * CONCEPTOS CLAVE: Componentes de Clase (Legacy)
+ *
+ * CARACTERÍSTICAS:
+ * - Componente de clase con herencia de React.Component
+ * - Acceso a props a través de this.props
+ * - Método render() obligatorio que devuelve JSX
+ * - Ejemplo de sintaxis antigua de React
+ *
+ * IMPLEMENTACIONES APLICADAS:
+ * - Class component: sintaxis pre-Hooks (desaconsejada para código nuevo)
+ * - this.props: forma de acceder a props en clases
+ * - render(): método que devuelve el JSX a renderizar
+ * - Constructor comentado: alternativa de inicialización
+ *
+ * POR QUÉ ES LEGACY:
+ * - Los componentes funcionales + Hooks son la forma moderna
+ * - Las clases son más verbosas y complejas
+ * - Se mantiene aquí como referencia histórica y aprendizaje
+ * - Nueva sintaxis preferida: const Saludar = ({nombre}) => <h1>Hola, {nombre}!</h1>
+ */
