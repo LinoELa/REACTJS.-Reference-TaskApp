@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { TasksCardComponent, TasksReadyComponent } from "./Tasks";
+import { Saludar } from "./Saludar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -15,10 +16,14 @@ root.render(
         { id: 3, title: "Task 3" },
       ]}
     />
-
     {/* Componente de estado de tarea */}
-    <TasksReadyComponent ready={true} />
-  </div>
+    <TasksReadyComponent ready={true} />, 
+    
+    
+    
+    {/* | DESACONSEJADO USAR | Componente de saludo */}
+    <Saludar nombre="Usuario" />
+  </div>,
 );
 
 // sHIFT + ALT + A comentar en  linea asi
