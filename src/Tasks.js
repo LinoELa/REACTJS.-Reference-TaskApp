@@ -1,10 +1,20 @@
-/*
-    * Tasks.js
-    * Componente que muestra una lista de tareas en una tarjeta.
-     - Recibe una prop 'tasks' que es un array de objetos con id y title.
-     - Renderiza cada tarea dentro de una lista. 
+// ======================= NOTES ==================================
 
-*/
+/**
+ * Archivo: Tasks.js
+ *
+ * Este archivo define dos componentes funcionales de React.
+ *
+ * Componentes:
+ * - `TasksCardComponent`: muestra una lista de tareas.
+ * - `TasksReadyComponent`: muestra el estado de una tarea.
+ *
+ * Props usadas:
+ * - `tasks`: array de objetos con `id` y `title`.
+ * - `ready`: valor booleano para mostrar estado realizado o no realizado.
+ *
+ * Este archivo conecta con temas de componentes, props y renderizado condicional.
+ */
 
 // ======================= IMPORTS =========================================
 

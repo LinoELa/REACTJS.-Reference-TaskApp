@@ -112,7 +112,7 @@ Regla de alcance:
 import express from "express";
 import { validateRequest } from "../../middlewares/validateRequest.js";
 
-// ======================= EXPRESS ROUTER ==================================
+// ======================= NOTES ==================================
 
 /**
  * - Define las rutas de autenticacion.
