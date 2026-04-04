@@ -46,13 +46,19 @@ Aprenderemos:
 - ✅ Mejor separación de preocupaciones
 
 **Tipos de Hooks:**
+- Básicos: useState, useEffect
+- Contexto: useContext
+- Estado avanzado: useReducer, useRef
+- Optimización: useMemo, useCallback
+- y más...
+  - https://legacy.reactjs.org/docs/hooks-reference.html
 
 ```
 ┌────────────────────────────────────┐
 │          TIPOS DE HOOKS            │
 ├────────────────────────────────────┤
 │                                    │
-│ BÁSICOS (siempre usas)            │
+│ BÁSICOS (siempre usas)             │
 │ • useState - Gestionar estado      │
 │ • useEffect - Efectos laterales    │
 │                                    │

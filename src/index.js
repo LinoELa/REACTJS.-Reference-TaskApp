@@ -52,6 +52,7 @@ import { ButtonComponent } from "./Button";
 import { PostsComponent } from "./Posts";
 import { ExternoComponent } from "./ModuloExterno";
 import { UserArrayComponent } from "./userArrays";
+import { CounterComponent, MensajeComponent } from "./UseState";
 
 // ================ APP ================
 
@@ -146,6 +147,9 @@ function App() {
 
         {/* Arrays en React */}
         <UserArrayComponent />
+
+        <CounterComponent/>
+        <MensajeComponent/>
       </div>
     );
 }
