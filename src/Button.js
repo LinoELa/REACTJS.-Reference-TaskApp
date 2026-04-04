@@ -22,14 +22,12 @@
 
 /* //============== BUTTON COMPONENT =============*/
 
-export function ButtonComponent({ text, name = "" }) {
+export function ButtonComponent({ text, name = "", onClick }) {
   return (
     <button
       className="btn"
       name={name}
-      onClick={function () {
-        console.log(`Button ${name} clicked!`);
-      }}
+      onClick={onClick}
     >
       {text}
     </button>

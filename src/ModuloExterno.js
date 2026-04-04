@@ -1,6 +1,6 @@
 //  =========== IMPORTS ============
 
-import VscGlobe from "@react-icons/vsc ";
+import { FaGlobeAmericas } from "react-icons/fa";
 //  =========== USO MODULO EXTERNO ============
 /**
  * Archivo: ModuloExterno.js
@@ -10,7 +10,6 @@ import VscGlobe from "@react-icons/vsc ";
  * @PostsComponent - Componente funcional que usa async/await y useState para manejar datos de la API.
  *
  */
-import { useState } from "react";
 
 export const ExternoComponent = () => {
   return (
@@ -24,7 +23,7 @@ export const ExternoComponent = () => {
         }}
       >
         {/* Aquí podrías agregar un icono de React Icons si lo deseas */}
-        <VscGlobe /> Traer datos
+        <FaGlobeAmericas /> Traer datos
       </button>
     </div>
   );
