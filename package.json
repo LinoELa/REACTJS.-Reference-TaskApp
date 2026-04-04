@@ -14,12 +14,23 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "env-cmd": "^10.1.0"
+  },
   "scripts": {
     "start": "react-scripts start",
+    "start:learning": "env-cmd -f .env.learning react-scripts start",
+    "start:project": "env-cmd -f .env.project react-scripts start",
+    "start:both": "concurrently \"npm run start:learning\" \"npm run start:project\"",
     "build": "react-scripts build",
+    "build:learning": "env-cmd -f .env.learning react-scripts build",
+    "build:project": "env-cmd -f .env.project react-scripts build",
     "test": "react-scripts test",
+    "test:watch": "react-scripts test --watchAll",
     "eject": "react-scripts eject",
-    "safe-build": "echo 'Verificando archivos sensibles...' && if test -f .env.local; then echo 'ERROR: .env.local encontrado. No hacer deploy con archivos .env'; exit 1; fi && npm run build",
+    "safe-build": "npm run build && echo '✓ Build completado sin archivos .env'",
+    "safe-deploy": "if test -f .env.local; then echo '✗ ERROR: .env.local encontrado'; exit 1; else npm run safe-build; fi",
     "ignore": "git check-ignore -v $(git ls-files --others --exclude-standard)"
   },
   "eslintConfig": {
