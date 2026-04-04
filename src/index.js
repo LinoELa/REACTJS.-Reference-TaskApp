@@ -12,18 +12,22 @@
  * - Demostrar cómo usar múltiples event handlers (onClick, onChange, onSubmit).
  *
  * Estructura del Componente App:
- * ├── TasksCardComponent - Lista de tareas (sin eventos)
- * ├── TasksReadyComponent - Indicador de estado (sin eventos)
- * ├── Saludar - Componente de clase legacy (sin eventos)
- * ├── ButtonComponent - Botón con onClick
- * ├── input - Entrada con onChange
- * ├── form #basic-form - Formulario con onSubmit (sin input)
- * └── form #basic-form-2 - Formulario con onChange + onSubmit
+ * ├── @TasksCardComponent - Lista de tareas (sin eventos)
+ * ├── @TasksReadyComponent - Indicador de estado (sin eventos)
+ * ├── @Saludar - Componente de clase legacy (sin eventos)
+ * ├── @ButtonComponent - Botón con onClick
+ * ├── @input - Entrada con onChange
+ * ├── @form #basic-form - Formulario con onSubmit (sin input)
+ * ├── @form #basic-form-2 - Formulario con onChange + onSubmit
+ * ├── @PostsComponent - Botón para traer datos con fetch (onClick)
+ * └── *----------------------------------------------------------*
+ *
  *
  * Event Handlers Definidos:
- * @handlerChange - onChange: Registra valor del input en consola
- * @handleSubmit - onSubmit: Previene recarga y registra envío del formulario
- * @handleButtonClick - onClick: Registra qué botón fue clickeado
+ * handlerChange - onChange: Registra valor del input en consola
+ * handleSubmit - onSubmit: Previene recarga y registra envío del formulario
+ * handleButtonClick - onClick: Registra qué botón fue clickeado
+ * handleFetchPosts - onClick: Fetch posts desde API y registra en consola
  *
  * INSTRUCCIONES PARA PROBAR:
  * 1. Abre el navegador (npm start)
@@ -42,6 +46,7 @@ import ReactDOM from "react-dom/client";
 import { TasksCardComponent, TasksReadyComponent } from "./Tasks";
 import { Saludar } from "./Saludar";
 import { ButtonComponent } from "./Button";
+import { PostsComponent } from "./Posts";
 
 // ================ APP ================
 
@@ -127,6 +132,9 @@ function App() {
         />
         <button type="submit">Submit</button>
       </form>
+
+      {/* onClick: Botón para traer datos con fetch */}
+      <PostsComponent />
     </div>
   );
 }
