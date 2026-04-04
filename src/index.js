@@ -53,6 +53,7 @@ import { PostsComponent } from "./Posts";
 import { ExternoComponent } from "./ModuloExterno";
 import { UserArrayComponent } from "./userArrays";
 import { CounterComponent, MensajeComponent } from "./UseState";
+import { UseEffectComponent } from "./UseEffect";
 
 // ================ APP ================
 
@@ -89,69 +90,74 @@ function App() {
 
   return (
     <div className="tasks-layout">
-        {/* ============ COMPONENTES ORIGINALES ============ */}
+      {/* ============ COMPONENTES ORIGINALES ============ */}
 
-        {/* TasksCardComponent: Muestra lista de tareas - Sin event handlers */}
-        <TasksCardComponent
-          tasks={[
-            { id: 1, title: "Task 1" },
-            { id: 2, title: "Task 2" },
-            { id: 3, title: "Task 3" },
-          ]}
-        />
+      {/* TasksCardComponent: Muestra lista de tareas - Sin event handlers */}
+      <TasksCardComponent
+        tasks={[
+          { id: 1, title: "Task 1" },
+          { id: 2, title: "Task 2" },
+          { id: 3, title: "Task 3" },
+        ]}
+      />
 
-        {/* TasksReadyComponent: Indicador de estado de tarea - Sin event handlers */}
-        <TasksReadyComponent ready={true} />
+      {/* TasksReadyComponent: Indicador de estado de tarea - Sin event handlers */}
+      <TasksReadyComponent ready={true} />
 
-        {/* Saludar: Componente de clase legacy - Sin event handlers */}
-        <Saludar nombre="Usuario" />
+      {/* Saludar: Componente de clase legacy - Sin event handlers */}
+      <Saludar nombre="Usuario" />
 
-        {/* ButtonComponent: Botón reutilizable con onClick handler */}
-        <ButtonComponent
-          text="Click me"
-          name="exampleButton"
-          onClick={() => handleButtonClick("exampleButton")}
-        />
+      {/* ButtonComponent: Botón reutilizable con onClick handler */}
+      <ButtonComponent
+        text="Click me"
+        name="exampleButton"
+        onClick={() => handleButtonClick("exampleButton")}
+      />
 
-        {/* ============ EJEMPLOS DE EVENT HANDLERS ============ */}
+      {/* ============ EJEMPLOS DE EVENT HANDLERS ============ */}
 
-        {/* onChange: Input SIN estado - Solo registra valor en consola */}
+      {/* onChange: Input SIN estado - Solo registra valor en consola */}
+      <input
+        id="input-example"
+        onChange={handlerChange}
+        placeholder="Escribe algo para ver onChange en consola..."
+      />
+
+      {/* onSubmit: Formulario SIN input - Solo botón submit */}
+      <form id="basic-form" onSubmit={handleSubmit}>
+        <h3>Formulario: Solo Submit (onSubmit)</h3>
+        <button type="submit">Submit</button>
+      </form>
+
+      {/* onSubmit + onChange: Formulario COMPLETO - Input + submit */}
+      <form id="basic-form-2" onSubmit={handleSubmit}>
+        <h3>Formulario: Input + Submit (onChange + onSubmit)</h3>
         <input
-          id="input-example"
+          id="input-example-2"
           onChange={handlerChange}
-          placeholder="Escribe algo para ver onChange en consola..."
+          placeholder="Escribe y presiona Submit..."
         />
+        <button type="submit">Submit</button>
+      </form>
 
-        {/* onSubmit: Formulario SIN input - Solo botón submit */}
-        <form id="basic-form" onSubmit={handleSubmit}>
-          <h3>Formulario: Solo Submit (onSubmit)</h3>
-          <button type="submit">Submit</button>
-        </form>
+      {/* onClick: Botón para traer datos con fetch */}
+      <PostsComponent />
 
-        {/* onSubmit + onChange: Formulario COMPLETO - Input + submit */}
-        <form id="basic-form-2" onSubmit={handleSubmit}>
-          <h3>Formulario: Input + Submit (onChange + onSubmit)</h3>
-          <input
-            id="input-example-2"
-            onChange={handlerChange}
-            placeholder="Escribe y presiona Submit..."
-          />
-          <button type="submit">Submit</button>
-        </form>
+      {/* Uso de modulo Externo */}
+      <ExternoComponent />
 
-        {/* onClick: Botón para traer datos con fetch */}
-        <PostsComponent />
+      {/* Arrays en React */}
+      <UserArrayComponent />
 
-        {/* Uso de modulo Externo */}
-        <ExternoComponent />
 
-        {/* Arrays en React */}
-        <UserArrayComponent />
-
-        <CounterComponent/>
-        <MensajeComponent/>
-      </div>
-    );
+      {/* Counter - Mensaje en React */}
+      <CounterComponent />
+      <MensajeComponent />
+      
+      {/* useEffect: Efectos secundarios */}
+      <UseEffectComponent />
+    </div>
+  );
 }
 
 // ================ ROOT RENDERING ================
