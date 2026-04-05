@@ -31,7 +31,9 @@ npm install
 # 3. Ejecutar ambos proyectos
 npm run start:both
 
-# ✅ Learning estará en: http://localhost:3000
+
+
+ # ✅ Learning estará en: http://localhost:3000
 # ✅ Projects estará en: http://localhost:3001
 ```
 
