@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "watch": "vite build --watch",
     "build": "vite build",
     "lint": "eslint .",
+    "lint:watch": "eslint . --watch",
     "preview": "vite preview"
   },
   "dependencies": {
