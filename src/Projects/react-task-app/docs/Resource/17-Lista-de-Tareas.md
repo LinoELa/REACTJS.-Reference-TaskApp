@@ -1,4 +1,4 @@
-# React Task App - Documentación Básica
+# React Task App - Lista de Tareas (17)
 
 > **Última actualización:** 5 de abril de 2026
 
@@ -6,127 +6,157 @@
 
 ## 📋 Tabla de Contenidos
 
-1. [Estado del Proyecto](#estado-del-proyecto)
-2. [Estructura Actual](#estructura-actual)
-3. [Stack Tecnológico](#stack-tecnológico)
-4. [Qué Hemos Hecho](#qué-hemos-hecho)
-5. [Limpieza Realizada](#limpieza-realizada)
-6. [Cómo Está Ahora](#cómo-está-ahora)
-7. [Próximos Pasos](#próximos-pasos)
+1. [Estado Actual](#-estado-actual)
+2. [Estructura del Proyecto](#-estructura-del-proyecto)
+3. [Stack Tecnológico](#%EF%B8%8F-stack-tecnológico)
+4. [Avances Realizados](#-avances-realizados)
+5. [Scripts Disponibles](#-scripts-disponibles)
+6. [Componentes Actuales](#-componentes-actuales)
+7. [Guía de Desarrollo](#-guía-de-desarrollo)
 
 ---
 
-## 🎯 Estado del Proyecto
+## 🎯 Estado Actual
 
-**Estado:** ✅ **PROYECTO INICIAL CONFIGURADO**
+**Estado:** 🚀 **EN DESARROLLO - FASE 1**
 
-El proyecto `react-task-app` es una aplicación básica de React configurada con **Vite** como empaquetador. Es un proyecto de referencia para aprender y practicar React en un entorno limpio y moderno.
+En esta fase estamos construyendo los componentes básicos de la **Lista de Tareas (TaskList)** con datos de semilla (seed data) para testing.
+
+### Hitos Comenzados
+- ✅ Componente `TaskList.jsx` creado
+- ✅ Datos de semilla en `assets/seed/seedTasks.js`
+- ✅ Scripts con modo watch habilitados
+- ✅ Auto-reload (HMR) en desarrollo configurado
+- ⏳ Lógica de tareas en progreso
 
 ---
 
-## 📁 Estructura Actual
+## 📁 Estructura del Proyecto
 
 ```
 react-task-app/
 ├── src/
-│   ├── App.jsx                 # Componente principal (básico)
-│   ├── main.jsx                # Punto de entrada de React
-│   ├── index.css               # Estilos globales (vacío)
-│   └── assets/                 # Carpeta para imágenes y recursos
-├── public/                     # Archivos estáticos públicos
-├── package.json                # Dependencias y scripts
-├── vite.config.js              # Configuración de Vite
-├── eslint.config.js            # Configuración de ESLint
-├── index.html                  # HTML principal
+│   ├── App.jsx                          # Componente principal
+│   ├── TaskList.jsx                     # 🆕 Componente de lista de tareas
+│   ├── main.jsx                         # Punto de entrada
+│   ├── index.css                        # Estilos globales
+│   └── assets/
+│       └── seed/
+│           └── seedTasks.js             # 🆕 Datos de prueba
+├── public/                              # Archivos estáticos
+├── package.json                         # Dependencias y scripts
+├── vite.config.js                       # Configuración Vite
+├── eslint.config.js                     # Configuración ESLint
+├── index.html                           # HTML raíz
 └── docs/
-    ├── notes.md                # Notas del proyecto
+    ├── notes.md
     └── Resource/
-        └── 16-Basic-TaskApp.md # Este archivo
+        ├── 16-Basic-TaskApp.md
+        └── 17-Lista-de-areas.md         # Este archivo
 ```
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
-### Dependencias Principales
+### Dependencias de Producción
 - **React:** v19.2.4
 - **React-DOM:** v19.2.4
 
 ### Herramientas de Desarrollo
-- **Vite:** v8.0.1 (empaquetador y servidor de desarrollo)
-- **ESLint:** v9.39.4 (linter de código)
-- **ESLint Plugins:**
-  - `eslint-plugin-react-hooks` (v7.0.1)
-  - `eslint-plugin-react-refresh` (v0.5.2)
-- **TypeScript Types:** @types/react, @types/react-dom
+- **Vite:** v8.0.1 (Empaquetador y Bundle)
+- **ESLint:** v9.39.4 (Linter)
+- **@vitejs/plugin-react:** v6.0.1 (Plugin React para Vite)
+- **eslint-plugin-react-hooks:** v7.0.1
+- **eslint-plugin-react-refresh:** v0.5.2
 
-### Scripts Disponibles
+### Características Habilitadas
+- ✅ **HMR (Hot Module Replacement)** - Auto-reload en desarrollo
+- ✅ **Fast Refresh** - Preserva estado al modificar componentes
+- ✅ **Watch Mode** - Construcción automática en cambios
+- ✅ **ESLint Watch** - Revisión automática de código
 
-```json
-{
-  "dev": "vite",              // Inicia servidor de desarrollo
-  "build": "vite build",      // Construye para producción
-  "lint": "eslint .",         // Revisar código con ESLint
-  "preview": "vite preview"   // Previsualiza build de producción
+---
+
+## ✅ Avances Realizados
+
+### Fase 0: Configuración Base ✅
+- ✅ Proyecto React con Vite inicializado
+- ✅ Dependencias de React 19 instaladas
+- ✅ ESLint configurado
+- ✅ Estructura de carpetas creada
+
+### Fase 1: Componentes Básicos (EN DESARROLLO)
+
+#### 1. **TaskList.jsx** ✅
+```javascript
+import React from "react";
+import tasks from "../src/assets/seed/seedTasks";
+
+function TaskListComponent() {
+  return <div>TaskList</div>;
 }
+
+export default TaskListComponent;
+```
+
+**Status:** Creado, lista para lógica de renderizado
+
+#### 2. **seedTasks.js** ✅
+Archivo con datos de prueba para llenar la aplicación sin dependencias externas.
+
+**Estructura esperada:**
+```javascript
+const seedTasks = [
+  { id: 1, title: "Aprender React", completed: false },
+  { id: 2, title: "Crear componentes", completed: true },
+  // ... más tareas
+];
+
+export default seedTasks;
+```
+
+### Scripts Mejorados ✅
+- ✅ `npm run dev` ahora con `--host` para HMR completo
+- ✅ `npm run watch` añadido para build continuo
+- ✅ `npm run lint:watch` para verificación automática
+
+---
+
+## 🎮 Scripts Disponibles
+
+| Script | Comando | Descripción |
+|--------|---------|-------------|
+| **dev** | `npm run dev` | ⚡ Inicia servidor con auto-reload |
+| **watch** | `npm run watch` | 👀 Vigila cambios y reconstruye |
+| **build** | `npm run build` | 🔨 Compila para producción |
+| **lint** | `npm run lint` | ✓ Revisa código con ESLint |
+| **lint:watch** | `npm run lint:watch` | 👀 ESLint automático |
+| **preview** | `npm run preview` | 🔍 Previsualiza build |
+
+### Recomendación de Desarrollo
+
+**Opción 1: Desarrollo con Auto-Reload (RECOMENDADO)**
+```bash
+npm run dev
+# Automáticamente recarga cambios en el navegador
+```
+
+**Opción 2: Con Watch para Errores**
+```bash
+# En Terminal 1
+npm run dev
+
+# En Terminal 2
+npm run lint:watch
 ```
 
 ---
 
-## ✅ Qué Hemos Hecho
+## 🏗️ Componentes Actuales
 
-### 1. **Inicialización del Proyecto**
-- ✅ Creado proyecto React con Vite
-- ✅ Instaladas dependencias de React y React-DOM v19
-- ✅ Configurado el sistema de módulos (type: "module")
-
-### 2. **Estructura Base**
-- ✅ Creado `App.jsx` con estructura básica comentada
-- ✅ Configurado `main.jsx` como punto de entrada
-- ✅ Creado `index.html` como plantilla HTML
-- ✅ Agregada carpeta `assets/` para recursos
-
-### 3. **Configuração de Herramientas**
-- ✅ Configurado Vite con plugin de React (`@vitejs/plugin-react`)
-- ✅ Configurado ESLint para mantener calidad de código
-- ✅ Creado `eslint.config.js` con reglas de React
-
-### 4. **Organización del Proyecto**
-- ✅ Creada estructura de `docs/` para documentación
-- ✅ Agregadas notas de referencia
-- ✅ Documentado el flujo de desarrollo
-
----
-
-## 🧹 Limpieza Realizada
-
-### Archivos Eliminados / No Incluidos
-- ❌ `node_modules/` (no se versionan)
-- ❌ Archivos de configuración innecesarios
-- ❌ Dependencias de ejemplo innecesarias
-- ❌ Componentes de prueba (counter, etc.)
-
-### Simplificaciones Realizadas
-- ✅ Removidos estilos por defecto innecesarios
-- ✅ `index.css` limpio y vacío para estilos personalizados
-- ✅ `App.jsx` con solo estructura básica comentada
-- ✅ Sin dependencias externas innecesarias (solo React)
-
----
-
-## 📊 Cómo Está Ahora
-
-### Estado Actual del Código
-
-#### **App.jsx** (Componente Principal)
+### App.jsx
 ```javascript
-// ================ NOTES ================
-/**
- * Archivo: App.js
- * Punto de entrada principal de la aplicación React
- * Responsabilidades: Renderiza la estructura básica
- */
-
 import React from "react";
 
 function App() {
@@ -140,95 +170,140 @@ function App() {
 export default App;
 ```
 
-**Estado:** ✅ **Básico y limpio**
-- Componente funcional simple
-- Bien comentado
-- Listo para agregar funcionalidad
-
-#### **main.jsx** (Punto de Entrada)
-```javascript
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
-```
-
-**Estado:** ✅ **Óptimo**
-- Configuración moderna de React 19
-- StrictMode habilitado (detecta problemas en desarrollo)
-- Renderización correcta en elemento `root`
-
-#### **index.css** (Estilos Globales)
-```css
-/* Vacío - listo para agregar estilos personalizados */
-```
-
-**Estado:** ✅ **Limpio y listo**
-
-#### **package.json** (Dependencias)
-- ✅ Dependencias minimalistas
-- ✅ Solo React y React-DOM necesarios
-- ✅ Herramientas de desarrollo configuradas
-- ✅ Scripts listos para usar
+**Estado:** ✅ Básico, listo para integrar componentes
 
 ---
 
+### TaskList.jsx
+```javascript
+import React from "react";
+import tasks from "../src/assets/seed/seedTasks";
 
+console.log("Tareas de semilla:", tasks);
 
-## 📝 Notas Importantes
+function TaskListComponent() {
+  return <div>TaskList</div>;
+}
 
-### Para Ejecutar el Proyecto
-
-```bash
-# Instalar dependencias (si no está hecho)
-npm install
-
-# Iniciar servidor de desarrollo
-npm run dev
-
-# Compilar para producción
-npm run build
-
-# Verificar código con ESLint
-npm run lint
+export default TaskListComponent;
 ```
+
+**Estado:** 🚧 En desarrollo
+- ✅ Importa datos de semilla
+- ⏳ Pendiente: Renderizar lista
+- ⏳ Pendiente: Agregar interactividad
+
+---
+
+##  Guía de Desarrollo
 
 ### Convenciones del Proyecto
 
-- **Componentes:** Archivos `.jsx` en `src/`
-- **Estilos:** CSS en `index.css` o archivos individuales
-- **Assets:** Imágenes y recursos en `src/assets/`
-- **Documentación:** Markdown en `docs/Resource/`
+```
+✅ Usar .jsx para componentes con JSX
+✅ Usar .js para lógica pura (helpers, constants)
+✅ Nombres PascalCase para componentes
+✅ Nombres camelCase para funciones/variables
+✅ Comentarios descriptivos en puntos clave
+```
 
-### Recursos de Referencia
+### Estructura de Componentes
 
-Ver archivos en REFERENCE-React/:
-- `13-Hooks.md` - Información sobre Hooks
-- `14-UseState-Hooks.md` - UseState en detalle
-- `15-UseEffect-Hooks.md` - UseEffect en detalle
-- etc.
+```javascript
+// ================ NOTES ================
+/**
+ * Descripción del componente
+ * Responsabilidades: ...
+ */
+
+// ================ IMPORTS ================
+import React from "react";
+
+// ================ COMPONENTE ================
+function MiComponente() {
+  return <div>Contenido</div>;
+}
+
+// ================ EXPORTS ================
+export default MiComponente;
+```
+
+### Flujo de Desarrollo Recomendado
+
+1. **Crear componente** en `src/` con estructura comentada
+2. **Importar en App.jsx** o componente padre
+3. **Ejecutar `npm run dev`** para ver cambios en tiempo real
+4. **Usar `npm run lint`** para revisar errores
+5. **Commitear cambios** cuando funcione
 
 ---
 
-## 📌 Resumen Final
+## 🔗 Recursos de Referencia
 
-| Aspecto                   | Estado         |
-| ------------------------- | -------------- |
-| **Configuración**         | ✅ Completa     |
-| **Estructura**            | ✅ Limpia       |
-| **Dependencias**          | ✅ Minimalistas |
-| **Código Base**           | ✅ Básico       |
-| **Documentación**         | ✅ En progreso  |
-| **Listo para desarrollo** | ✅ SÍ           |
-
-**El proyecto está listo para comenzar a agregar funcionalidad de Task App.**
+Consulta la carpeta `REFERENCE-React/` para:
+- `13-Hooks.md` - Teoría de Hooks
+- `14-UseState-Hooks.md` - useState en detalle
+- `15-UseEffect-Hooks.md` - useEffect en detalle
+- `09-Event-Handlers.md` - Manejo de eventos
 
 ---
 
-*Documento generado para referencia de desarrollo. Actualizar según avances.*
+## 📊 Progreso General
+
+| Aspecto | Estado |
+|---------|--------|
+| **Configuración Base** | ✅ Completo |
+| **Autoreload (HMR)** | ✅ Habilitado |
+| **Watch Mode** | ✅ Disponible |
+| **ESLint** | ✅ Configurado |
+| **TaskList.jsx** | 🚧 En desarrollo |
+| **Componentes** | 🚧 Fase 1 |
+| **Estilos** | ⏳ Por hacer |
+| **Persistencia** | ⏳ Por hacer |
+
+---
+
+## 💡 Consejos Útiles
+
+### Para Debugging
+```javascript
+// Usar console.log en componentes
+console.log("Estado actual:", tasks);
+
+// Abrir DevTools del navegador (F12)
+// Pestaña React Developer Tools para inspeccionar componentes
+```
+
+### Para Rendimiento
+```javascript
+// En desarrollo, React StrictMode ayuda a detectar problemas
+// No afecta producción
+```
+
+### Para Commits
+```bash
+# Hacer commits pequeños y descriptivos
+git add .
+git commit -m "feat: Agregar renderizado de lista de tareas"
+git push
+```
+
+---
+
+## 📌 Resumen
+
+**Donde estamos:**
+- ✅ Proyecto base configurado con Vite
+- ✅ Auto-reload habilitado
+- ✅ Datos de semilla lista
+- 🚧 Comenzando lista de tareas
+
+**Para empezar ahora:**
+```bash
+npm run dev              # Inicia servidor
+# Edita TaskList.jsx y verás cambios en tiempo real
+```
+
+---
+
+*Documento actualizado continuamente durante el desarrollo. Última actualización: 5 de abril, 2026*
