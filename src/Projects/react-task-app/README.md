@@ -25,6 +25,46 @@ npm run start:both
 
 ---
 
+## ⚙️ Vite y Extensiones de Archivo (.jsx vs .js)
+
+### ¿Es obligatorio usar .jsx en Vite?
+
+**NO, no es obligatorio.** En Vite puedes usar tanto **`.jsx`** como **`.js`** para archivos con React.
+
+#### Diferencias
+
+| Aspecto | `.jsx` | `.js` |
+|---------|--------|-------|
+| **JSX válido** | ✅ Sí | ✅ Sí |
+| **Recomendación** | ⭐ Sí (buena práctica) | ⚠️ Funciona pero confuso |
+| **Claridad** | ✅ Indica componente React | ❌ No es obvio |
+| **Editor** | ✅ Mejor syntax highlighting | ⚠️ Limitado |
+| **Rendimiento** | ✅ Igual | ✅ Igual |
+
+#### 🎯 Nuestra Convención
+
+En este proyecto usamos:
+- **`.jsx`** → Componentes React (con JSX)
+- **`.js`** → Lógica pura (helpers, utilities, config)
+
+```javascript
+// ✅ RECOMENDADO
+App.jsx          // Componentes React
+Button.jsx       // Componentes React
+utils.js         // Funciones auxiliares
+constants.js     // Constantes
+```
+
+#### ⚡ Consejo
+
+Aunque Vite acepta ambos, usar **`.jsx`** es mejor porque:
+1. **Clarifica** que el archivo contiene JSX/React
+2. **Mejora** el syntax highlighting en editores
+3. **Sigue** estándares de la comunidad React
+4. **Facilita** la búsqueda de componentes
+
+---
+
 ## 📂 Sistema de 2 Proyectos
 
 Este proyecto es parte de un sistema educativo con 2 aplicaciones independientes:
