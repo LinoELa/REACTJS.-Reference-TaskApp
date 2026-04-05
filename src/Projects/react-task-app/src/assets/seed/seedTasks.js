@@ -18,7 +18,7 @@
 
 // ================ SEEDS ================
 
-const tasks = [
+const tasksData = [
   {
     id: 1,
     title: "Comprar leche",
@@ -39,4 +39,4 @@ const tasks = [
   },
 ];
 
-export default tasks;
+export default tasksData;

@@ -16,17 +16,53 @@
  */
 
 // ================ IMPORTS ================
-import React from "react";
-import tasks from "./assets/seed/seedTasks";
 
-
+import { useState, useEffect } from "react";
+import tasksData from "./assets/seed/seedTasks";
 
 // ================ COMPONENTE TASKLIST ================
 
-console.log("Tareas de semilla:", tasks);
+// Log para verificar que los datos de semilla se importen correctamente desde el archivo seedTasks
+console.log("Tareas de semilla:", tasksData);
 
+/**
+ * Componente funcional TaskListComponent
+ * Renderiza una lista de tareas obtenidas desde los datos de semilla
+ * @returns {JSX.Element} Lista de tareas o mensaje de lista vacía
+ */
 function TaskListComponent() {
-  return <div>TaskList</div>;
+  // Estado local para almacenar el array de tareas
+  // tasks: array actual de tareas | setTasks: función para actualizar el estado
+  const [tasks, setTasks] = useState([]);
+
+  // Hook useEffect que se ejecuta una única vez al montar el componente (dependencias vacías)
+  // Simula la carga de tareas desde una fuente externa (API, datos de semilla, etc.)
+  useEffect(() => {
+    setTasks(tasksData);
+  }, []);
+
+  // Validación: Si no hay tareas disponibles, renderiza mensaje informativo
+  if (tasks.length === 0) {
+    return <div>No hay tareas disponibles</div>;
+  }
+
+  // Renderiza contenedor principal con lista de tareas
+  return (
+    <div>
+      {/* 
+        Itera sobre el array de tareas y renderiza cada una
+        - key={task.id} es necesario para que React identifique cada elemento
+        - task.title: título de la tarea
+        - task.description: descripción detallada de la tarea
+      */}
+      {tasks.map((task) => (
+        <div key={task.id}>
+          <h2>{task.title}</h2>
+          <p>{task.description}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default TaskListComponent;
