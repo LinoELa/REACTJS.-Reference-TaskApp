@@ -4,13 +4,10 @@
  * Archivo: TaskList.jsx
  *
  * Componente que renderiza y gestiona la visualización de la lista de tareas.
- * Responsable de mostrar todas las tareas con sus estados y permitir interacciones.
+ * IMPORTANTE: Este componente NO maneja estado, solo recibe tareas como prop desde App.jsx
  *
- * Funcionalidad:
- * - useEffect: Carga las tareas desde los datos de semilla al montar el componente
- * - useState: Mantiene el array de tareas en estado local
- * - Validación: Si no hay tareas, muestra mensaje informativo
- * - map(): Itera sobre el array de tareas y renderiza cada una con key={task.id}
+ * Props:
+ * - tasks: Array de tareas a renderizar
  *
  * Estructura de datos (task):
  * {
@@ -19,31 +16,21 @@
  *   description: descripción detallada de la tarea
  *   completed: booleano (completada o pendiente)
  * }
- *
- * Props: Ninguna (utiliza datos de semilla)
- * Estado: [tasks, setTasks] - Array de tareas
  */
 
 // ================ IMPORTS ================
 
-import { useState, useEffect } from "react";
-import tasksData from "./assets/seed/seedTasks";
+import React from "react";
 
 // ================ COMPONENTE TASKLIST ================
 
-console.log("Tareas de semilla:", tasksData);
-
-function TaskListComponent() {
-  const [tasks, setTasks] = useState([]);
-
-  useEffect(() => {
-    setTasks(tasksData);
-  }, []);
-
-  if (tasks.length === 0) {
+function TaskListComponent({ tasks }) {
+  // Validación: Si no hay tareas, muestra mensaje informativo
+  if (!tasks || tasks.length === 0) {
     return <div>No hay tareas disponibles</div>;
   }
 
+  // Renderiza la lista de tareas mapeando el array
   return (
     <div>
       {tasks.map((task) => (
