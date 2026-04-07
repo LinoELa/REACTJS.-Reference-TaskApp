@@ -11,6 +11,7 @@
  *
  * Estado local:
  * - title: String del título de la tarea
+ * - description: String de la descripción de la tarea
  */
 
 // ================ IMPORTS ================
@@ -21,6 +22,7 @@ import { useState } from "react";
 
 function TaskFormComponent({ createTask }) {
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,19 +32,27 @@ function TaskFormComponent({ createTask }) {
       return;
     }
 
-    createTask({ title }); // Llama a la función createTask con el nuevo título
+    createTask({ title, description }); // Llama a la función createTask con el nuevo título y descripción
     setTitle(""); // Limpiar campo después de agregar
+    setDescription(""); // Limpiar campo de descripción después de agregar
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>Agregar Nueva Tarea</h2>
+
       <input
         type="text"
         placeholder="Escribe tu tarea"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(event) => setTitle(event.target.value)}
       />
+
+      <textarea
+        placeholder="Escribe la descripción de tu tarea"
+        value={description}
+        onChange={(event) => setDescription(event.target.value)}
+      ></textarea>
       <button type="submit">Agregar (Guardar)</button>
     </form>
   );

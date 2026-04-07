@@ -16,9 +16,9 @@
 // ================ IMPORTS ================
 import { useEffect, useState } from "react";
 
-import TaskListComponent from "./TaskList";
-import tasksData from "./assets/seed/seedTasks";
-import TaskFormComponent from "./TaskForm";
+import TaskListComponent from "./components/tasks/TaskList";
+import tasksData from "./components/data/TasksData";
+import TaskFormComponent from "./components/tasks/TaskForm";
 
 // ================ APP PRINCIPAL COMPONENTE ================
 function App() {
@@ -33,8 +33,9 @@ function App() {
     setTasks([
       ...tasks,
       {
-        id: tasks.length, // Genera ID basado en la longitud del array de tareas
+        id: Date.now(), // Genera ID único basado en timestamp
         title: task.title,
+        description: task.description,
       },
     ]);
   }
