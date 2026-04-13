@@ -16,13 +16,18 @@
 
 // ================ IMPORTS ================
 
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { TaskContext } from "../../context/TaskContext";
 
 // ================ COMPONENTE TASKFORM ================
 
 function TaskFormComponent({ createTask }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+
+  const taskContext = useContext(TaskContext); // Accede al contexto de tareas
+
+  console.log(taskContext, "Task Form"); // Muestra el mensaje del contexto en la consola
 
   const handleSubmit = (event) => {
     event.preventDefault();
