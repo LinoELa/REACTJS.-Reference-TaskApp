@@ -1,6 +1,10 @@
+import { TaskContext } from "../../context/TaskContext";
 import TaskCard from "./TaskCard";
+import { useContext } from "react";
 
-function TaskListComponent({ tasks, deleteTask }) {
+function TaskListComponent() {
+  const { tasks } = useContext(TaskContext);
+
   if (!tasks || tasks.length === 0) {
     return <div>No hay tareas disponibles</div>;
   }
@@ -8,7 +12,7 @@ function TaskListComponent({ tasks, deleteTask }) {
   return (
     <div>
       {tasks.map((task) => (
-        <TaskCard key={task.id} task={task} deleteTask={deleteTask} />
+        <TaskCard key={task.id} task={task} />
       ))}
     </div>
   );

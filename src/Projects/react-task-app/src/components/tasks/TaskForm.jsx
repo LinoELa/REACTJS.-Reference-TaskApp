@@ -21,13 +21,13 @@ import { TaskContext } from "../../context/TaskContext";
 
 // ================ COMPONENTE TASKFORM ================
 
-function TaskFormComponent({ createTask }) {
+function TaskFormComponent() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const taskContext = useContext(TaskContext); // Accede al contexto de tareas
+  const { createTask } = useContext(TaskContext); // Accede al contexto de tareas
 
-  console.log(taskContext, "Task Form"); // Muestra el mensaje del contexto en la consola
+  console.log(createTask, "Task Form"); // Muestra el mensaje del contexto en la consola
 
   const handleSubmit = (event) => {
     event.preventDefault();
