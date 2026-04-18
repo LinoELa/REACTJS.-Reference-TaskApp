@@ -22,12 +22,13 @@ function TaskContextProvider(props) {
         id: Date.now(),
         title: task.title,
         description: task.description,
+        completed: false,
       },
     ]);
   }
 
   function deleteTask(taskId) {
-    setTasks(tasks.filter((task) => task.id !== taskId));
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   }
 
   return (

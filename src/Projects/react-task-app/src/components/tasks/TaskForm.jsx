@@ -1,33 +1,10 @@
-// ================ NOTES ================
-
-/**
- * Archivo: TaskForm.jsx
- *
- * Componente que renderiza un formulario para agregar nuevas tareas.
- * Recibe una función `createTask` desde App.jsx para agregar tareas al estado global.
- *
- * Props:
- * - createTask: Función callback para agregar tarea al estado de App
- *
- * Estado local:
- * - title: String del título de la tarea
- * - description: String de la descripción de la tarea
- */
-
-// ================ IMPORTS ================
-
 import { useContext, useState } from "react";
 import { TaskContext } from "../../context/TaskContext";
-
-// ================ COMPONENTE TASKFORM ================
 
 function TaskFormComponent() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
-  const { createTask } = useContext(TaskContext); // Accede al contexto de tareas
-
-  console.log(createTask, "Task Form"); // Muestra el mensaje del contexto en la consola
+  const { createTask } = useContext(TaskContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,32 +14,52 @@ function TaskFormComponent() {
       return;
     }
 
-    createTask({ title, description }); // Llama a la función createTask con el nuevo título y descripción
-    setTitle(""); // Limpiar campo después de agregar
-    setDescription(""); // Limpiar campo de descripción después de agregar
+    createTask({ title, description });
+    setTitle("");
+    setDescription("");
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Agregar Nueva Tarea</h2>
+    <form
+      onSubmit={handleSubmit}
+      className="mt-8 space-y-4 rounded-2xl border border-white/10 bg-slate-950/50 p-4"
+    >
+      <h2 className="text-lg font-semibold text-white">Nueva tarea</h2>
 
-      <input
-        type="text"
-        placeholder="Escribe tu tarea"
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
-      />
+      <label className="block space-y-2">
+        <span className="text-xs font-medium uppercase tracking-[0.16em] text-slate-400">
+          Titulo
+        </span>
+        <input
+          type="text"
+          placeholder="Ej: Terminar maquetacion"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+          className="w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/30"
+        />
+      </label>
 
-      <textarea
-        placeholder="Escribe la descripción de tu tarea"
-        value={description}
-        onChange={(event) => setDescription(event.target.value)}
-      ></textarea>
-      <button type="submit">Agregar (Guardar)</button>
+      <label className="block space-y-2">
+        <span className="text-xs font-medium uppercase tracking-[0.16em] text-slate-400">
+          Descripcion
+        </span>
+        <textarea
+          placeholder="Detalle rapido de la tarea"
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
+          rows={4}
+          className="w-full resize-none rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/30"
+        />
+      </label>
+
+      <button
+        type="submit"
+        className="w-full rounded-xl bg-gradient-to-r from-cyan-400 to-emerald-400 px-4 py-3 text-sm font-semibold text-slate-950 transition hover:brightness-110"
+      >
+        Guardar tarea
+      </button>
     </form>
   );
 }
-
-// ================ EXPORTS ================
 
 export default TaskFormComponent;
