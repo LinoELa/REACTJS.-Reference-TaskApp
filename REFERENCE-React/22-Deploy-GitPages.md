@@ -3,236 +3,304 @@
 ## Índice
 
 1. Introducción
-2. Objetivo de la fase
-3. Estado real del proyecto
-4. Qué tienes ya instalado y configurado
-5. Opción A: deploy manual con `gh-pages`
-6. Opción B: deploy automático con GitHub Actions
-7. Configuración clave de Vite para GitHub Pages
-8. Pasos recomendados para publicarlo correctamente
-9. Errores comunes
-10. Aprendizajes clave
+2. Qué proyecto se publica
+3. Estado final que sí funcionó
+4. Preparación antes del deploy
+5. Paso 1 - Revisar `vite.config.js`
+6. Paso 2 - Hacer build correcto
+7. Paso 3 - Hacer deploy con `gh-pages`
+8. Paso 4 - Configurar GitHub Pages
+9. Paso 5 - Comprobar la web
+10. Qué no debes hacer
+11. Errores comunes
+12. Resumen rápido para futuro
 
 ---
 
 ## Introducción
 
-Esta fase documenta cómo publicar `react-task-app` en GitHub Pages usando la configuración real que ya existe en tu repositorio.
+Esta guía explica el proceso real que seguimos para publicar `react-task-app` en GitHub Pages dentro de un repositorio que contiene más de un proyecto.
 
-Aquí no se habla de un deploy genérico. Se documenta lo que ya encontré en tu proyecto:
+La idea es que en el futuro puedas repetir el deploy tú mismo sin volver a confundirte entre el repo, el README, la rama `main`, la rama `gh-pages` o la configuración de Pages.
 
-- script `deploy` con `gh-pages`
-- dependencia `gh-pages` instalada
-- `vite.config.js` con `base` dinámico para GitHub Actions
-- workflow `.github/workflows/deploy.yml`
-- build generado en `src/Projects/react-task-app/dist`
+---
 
-## Objetivo de la fase
+## Qué proyecto se publica
 
-Dejar claro qué has instalado, qué hace cada pieza y cuáles son los pasos necesarios para publicar correctamente la app en GitHub Pages.
+El proyecto que sí se publica es este:
 
-## Estado real del proyecto
+- `src/Projects/react-task-app`
 
-Al revisar el repositorio, el sistema de deploy del proyecto `src/Projects/react-task-app/` ya tiene varias piezas preparadas.
+No se publica:
 
-### En `src/Projects/react-task-app/package.json`
+- el `README.md` de la raíz
+- la carpeta `src/Learning/`
+- la raíz del repositorio como si fuera la web
 
-Ya existe:
+---
 
-- dependencia `gh-pages`
-- script `build` con Vite
-- script `deploy` con `gh-pages -d dist`
-- Tailwind configurado en devDependencies
+## Estado final que sí funcionó
 
-### En `src/Projects/react-task-app/vite.config.js`
+El método que quedó funcionando fue este:
 
-Ya existe una configuración dinámica de `base` que detecta estas variables:
+- build del proyecto `src/Projects/react-task-app`
+- deploy manual con `gh-pages`
+- rama publicada: `gh-pages`
+- GitHub Pages configurado en `Deploy from a branch`
+- branch elegida: `gh-pages`
+- carpeta elegida: `/ (root)`
 
-- `GITHUB_REPOSITORY`
-- `GITHUB_ACTIONS`
+URL pública esperada:
 
-Si el build corre dentro de GitHub Actions, Vite usa como base `/<repoName>/`. Si no, usa `/`.
+- `https://linoela.github.io/REACTJS-REFERENCE/`
 
-### En `.github/workflows/deploy.yml`
+---
 
-Ya existe un workflow que:
+## Preparación antes del deploy
 
-- se ejecuta en push a `main`
-- instala dependencias en `src/Projects/react-task-app`
-- ejecuta `npm run build`
-- sube el contenido de `dist` como artifact
-- publica en GitHub Pages usando `actions/deploy-pages`
+Antes de publicar, revisa siempre esto:
 
-## Qué tienes ya instalado y configurado
+1. estás trabajando dentro del repo `taskapp-reference`
+2. el proyecto correcto es `src/Projects/react-task-app`
+3. tienes dependencias instaladas
+4. sabes diferenciar la URL del repo de la URL del sitio publicado
 
-### Dependencias y herramientas detectadas
+Recuerda:
 
-Dentro de `src/Projects/react-task-app/package.json` tienes:
+- repo: `https://github.com/LinoELa/REACTJS-REFERENCE`
+- sitio: `https://linoela.github.io/REACTJS-REFERENCE/`
 
-- `react`
-- `react-dom`
-- `vite`
-- `@vitejs/plugin-react`
-- `tailwindcss`
-- `@tailwindcss/vite`
-- `gh-pages`
+---
 
-### Scripts importantes detectados
+## Paso 1 - Revisar `vite.config.js`
 
-- `npm run dev`
-- `npm run build`
-- `npm run preview`
-- `npm run deploy`
+Este paso es muy importante.
 
-### Archivos importantes para deploy
+GitHub Pages no sirve la app desde `/`, sino desde una subruta con el nombre del repositorio. En este caso:
 
-- `src/Projects/react-task-app/package.json`
-- `src/Projects/react-task-app/vite.config.js`
-- `.github/workflows/deploy.yml`
-- `src/Projects/react-task-app/dist/`
+- `/REACTJS-REFERENCE/`
 
-## Opción A: deploy manual con `gh-pages`
+Si Vite genera rutas como estas:
 
-Esta opción publica manualmente el contenido de `dist` en la rama especial usada por GitHub Pages.
+- `/assets/...`
+- `/favicon.svg`
 
-### Qué necesitas
+la app puede romperse en producción aunque funcione en local.
 
-- tener el proyecto ya subido a GitHub
-- tener permisos de escritura en el repositorio
-- haber ejecutado el build antes de desplegar
+La idea correcta es:
 
-### Flujo manual recomendado
+- en desarrollo usar `base: "/"`
+- en build usar `base: "/REACTJS-REFERENCE/"` o una versión dinámica basada en el nombre del repo
 
-1. entrar en `src/Projects/react-task-app`
-2. instalar dependencias si hace falta
-3. ejecutar `npm run build`
-4. ejecutar `npm run deploy`
+Cuando el build quedó bien, el `dist/index.html` terminó apuntando a rutas como:
 
-### Comandos típicos
+- `/REACTJS-REFERENCE/assets/...`
+- `/REACTJS-REFERENCE/favicon.svg`
 
-Desde la carpeta del proyecto Vite:
+---
 
-- `npm install`
-- `npm run build`
-- `npm run deploy`
+## Paso 2 - Hacer build correcto
 
-### Qué hace `npm run deploy`
+Desde la raíz del repo, el comando correcto es:
 
-Ejecuta:
+- `npm --prefix src/Projects/react-task-app run build`
+
+Este comando:
+
+- usa el proyecto correcto
+- genera `dist/` en `src/Projects/react-task-app`
+- prepara los archivos que después se publican en GitHub Pages
+
+Después del build, conviene revisar que exista:
+
+- `src/Projects/react-task-app/dist/index.html`
+
+y que las rutas dentro apunten a `REACTJS-REFERENCE`.
+
+---
+
+## Paso 3 - Hacer deploy con `gh-pages`
+
+Cuando el build ya está bien, publica con este comando, también desde la raíz del repo:
+
+- `npm --prefix src/Projects/react-task-app run deploy`
+
+Ese script ejecuta:
 
 - `gh-pages -d dist`
 
-Eso publica el contenido de `dist` en la rama que usa `gh-pages` para servir la aplicación.
+Su función es subir el contenido de `dist` a la rama `gh-pages`.
 
-### Cuándo usar esta opción
+Cuando el deploy sale bien, normalmente verás algo como:
 
-- cuando quieres publicar manualmente
-- cuando todavía no quieres depender del workflow automático
-- cuando estás probando el primer deploy
+- `Published`
 
-## Opción B: deploy automático con GitHub Actions
+Después de eso, la rama `gh-pages` debe contener archivos como:
 
-Esta es la opción más alineada con lo que ya tienes preparado en el repo.
+- `index.html`
+- `assets/`
+- `favicon.svg`
 
-El workflow `.github/workflows/deploy.yml` hace el despliegue cada vez que haces push a `main`.
+---
 
-### Qué hace el workflow
+## Paso 4 - Configurar GitHub Pages
 
-1. hace checkout del repo
-2. configura Node.js 20
-3. usa caché de npm con `package-lock.json` del proyecto
-4. ejecuta `npm ci` en `src/Projects/react-task-app`
-5. ejecuta `npm run build`
-6. configura GitHub Pages
-7. sube `dist` como artifact
-8. publica el sitio con `actions/deploy-pages`
+En GitHub entra a:
 
-### Ventajas de esta opción
+- `Settings > Pages`
 
-- no necesitas lanzar `gh-pages` desde tu máquina cada vez
-- el deploy queda automatizado
-- el build se hace en entorno limpio
-- es más fácil mantener un flujo profesional
+Y usa esta configuración si vas a mantener el deploy manual con `gh-pages`:
 
-## Configuración clave de Vite para GitHub Pages
+- **Source:** `Deploy from a branch`
+- **Branch:** `gh-pages`
+- **Folder:** `/ (root)`
 
-Tu `vite.config.js` es una parte muy importante del despliegue.
+Esta fue la configuración que sí funcionó al final.
 
-GitHub Pages no suele servir la app desde `/`, sino desde una subruta como `/<nombre-del-repo>/`.
+### Qué no debes seleccionar para este método
 
-Por eso tu proyecto usa lógica dinámica:
+No uses esto si tu deploy actual depende de la rama `gh-pages`:
 
-- si está corriendo en GitHub Actions y existe `GITHUB_REPOSITORY`, el `base` se ajusta automáticamente al nombre del repo
-- si estás en local, el `base` es `/` para que el desarrollo funcione normal
+- `GitHub Actions`
+- `Jekyll`
+- `Static HTML`
 
-Esto evita uno de los errores más comunes en Vite + GitHub Pages: que los assets carguen con rutas rotas después del deploy.
+Eso pertenece a otros flujos distintos.
 
-## Pasos recomendados para publicarlo correctamente
+---
 
-### Ruta recomendada: GitHub Actions
+## Paso 5 - Comprobar la web
 
-1. confirma que el repositorio está en GitHub
-2. confirma que la rama principal es `main`
-3. haz commit de los cambios
-4. haz push a `main`
-5. entra a `Settings > Pages` en GitHub
-6. asegúrate de que la fuente de Pages esté en `GitHub Actions`
-7. revisa la pestaña `Actions` para confirmar que el workflow terminó bien
-8. abre la URL pública generada por Pages
+Después de guardar la configuración de Pages:
 
-### Ruta alternativa: manual con `gh-pages`
+1. espera 1 a 3 minutos
+2. abre la URL pública
+3. si hace falta, haz `Ctrl + F5`
+4. si sigue igual, prueba incógnito
 
-1. entra en `src/Projects/react-task-app`
-2. ejecuta `npm run build`
-3. ejecuta `npm run deploy`
-4. en GitHub, revisa la rama publicada o la configuración de Pages
+La URL correcta es:
 
-### Importante sobre la raíz del monorepo
+- `https://linoela.github.io/REACTJS-REFERENCE/`
 
-Tu repo tiene una estructura híbrida: la raíz usa otro `package.json` para el proyecto general, pero el deploy documentado aquí corresponde específicamente a `src/Projects/react-task-app`.
+Si abres la URL del repo de GitHub, verás el `README`, no la app.
 
-Por eso conviene diferenciar:
+---
 
-- el `package.json` raíz
-- el `package.json` interno del proyecto Vite
+## Qué no debes hacer
 
-El deploy de GitHub Pages que documentamos en este tema pertenece al proyecto interno Vite.
+### 1. No confundas repo con sitio
+
+- repo: muestra código y README
+- Pages: muestra la aplicación publicada
+
+### 2. No publiques el proyecto equivocado
+
+No publiques la raíz del repo ni `src/Learning/`. El proyecto correcto es `src/Projects/react-task-app`.
+
+### 3. No hagas `merge gh-pages -> main`
+
+`gh-pages` es una rama de publicación. No se debe mezclar dentro de `main`.
+
+Si lo haces, puedes meter archivos compilados como `index.html` o `assets/` dentro de la rama fuente principal y crear más confusión.
+
+### 4. No mezcles dos métodos de deploy sin control
+
+Si usas `gh-pages`, deja Pages apuntando a `gh-pages`. Si quieres usar Actions en el futuro, cambia el método de forma consciente y deja uno solo activo.
+
+---
 
 ## Errores comunes
 
-### 1. Publicar sin hacer build
+### Error 1 - Se ve el README en vez de la app
 
-Si `dist` no existe o está desactualizado, el deploy manual no publicará lo correcto.
+Causa probable:
 
-### 2. Base path incorrecto
+- abriste la URL del repo
+- o Pages apunta al origen equivocado
 
-En Vite, si el `base` no coincide con el nombre del repositorio, la app puede abrir pero sin CSS, JS o imágenes.
+Solución:
 
-### 3. Configurar mal GitHub Pages
+- abrir la URL del sitio
+- revisar `Settings > Pages`
+- confirmar `gh-pages` + `/ (root)`
 
-Si en `Settings > Pages` no usas la fuente correcta, el workflow puede completar bien pero la web no aparecer donde esperas.
+### Error 2 - La app abre sin estilos o sin JS
 
-### 4. Confundir el package.json raíz con el interno
+Causa probable:
 
-El deploy real de esta app está ligado al proyecto `src/Projects/react-task-app`, no al root principal del repositorio.
+- `base` mal configurado en Vite
 
-### 5. Pensar que `gh-pages` y Actions son obligatorios a la vez
+Solución:
 
-Puedes usar ambos, pero no es necesario depender de las dos rutas al mismo tiempo para cada publicación.
+- revisar `vite.config.js`
+- repetir build
+- repetir deploy
 
-## Aprendizajes clave
+### Error 3 - Se ejecuta build del root en lugar del proyecto Vite
 
-- GitHub Pages puede publicarse manualmente o con automatización CI/CD.
-- `gh-pages` sirve bien para deploy manual rápido.
-- GitHub Actions ofrece un flujo más profesional y repetible.
-- En Vite, la configuración de `base` es crítica para que GitHub Pages funcione.
-- Documentar qué vive en la raíz y qué vive en `src/Projects/react-task-app` evita mucha confusión.
+Causa probable:
 
-## Siguiente fase sugerida
+- usar `npm run build` en la raíz pensando que compila `react-task-app`
 
-Después del deploy, una mejora natural sería documentar:
+Solución:
 
-- variables de entorno seguras para producción
-- dominio personalizado en GitHub Pages
-- estrategia de versionado o release
-- checklist de QA antes de publicar
+usar siempre:
+
+- `npm --prefix src/Projects/react-task-app run build`
+
+### Error 4 - Se publica un `dist` viejo
+
+Causa probable:
+
+- lanzar deploy sin haber generado un build nuevo
+
+Solución:
+
+seguir siempre este orden:
+
+1. build
+2. deploy
+
+---
+
+## Resumen rápido para futuro
+
+Cada vez que quieras hacer deploy manual de este proyecto, sigue esta receta:
+
+### Checklist
+
+1. revisar `vite.config.js`
+2. confirmar que el proyecto es `src/Projects/react-task-app`
+3. ejecutar build
+4. ejecutar deploy
+5. revisar GitHub Pages
+6. abrir la URL correcta
+
+### Comandos a recordar
+
+Desde la raíz del repo:
+
+- `npm --prefix src/Projects/react-task-app run build`
+- `npm --prefix src/Projects/react-task-app run deploy`
+
+### Configuración a recordar en GitHub
+
+- `Settings > Pages`
+- `Deploy from a branch`
+- `gh-pages`
+- `/ (root)`
+
+---
+
+## Resumen final
+
+El deploy correcto de este repo no consiste en publicar todo el repositorio ni en tomar el `README` como referencia visual del sitio.
+
+El flujo correcto es:
+
+- compilar `src/Projects/react-task-app`
+- publicar `dist` con `gh-pages`
+- hacer que GitHub Pages apunte a la rama `gh-pages`
+- abrir la URL pública correcta
+
+Si vuelves a seguir estos pasos, podrás repetir el deploy tú mismo sin perderte entre ramas, proyectos o configuraciones de GitHub Pages.
