@@ -6,96 +6,96 @@
 
 ## ¿Qué es esta carpeta?
 
-`Resource/` contiene **material de estudio estructurado** para aprender React desde cero, enfocado en la arquitectura y desarrollo del proyecto **TaskApp**. No es documentación del código, sino un **plan de aprendizaje paso a paso**.
+`REFERENCE-React/` contiene material de estudio estructurado para aprender React paso a paso, usando como referencia tanto la parte de aprendizaje general como la evolución del proyecto `react-task-app`.
 
 ## ¿Para qué sirve?
 
-- ✅ **Aprender React** desde conceptos básicos hasta avanzados
-- ✅ **Entender arquitectura** y estructura de proyectos profesionales
-- ✅ **Practicar** con ejemplos reales del TaskApp
-- ✅ **Consultar** cuando tengas dudas sobre React
+- Aprender React desde conceptos básicos hasta temas de arquitectura
+- Entender cómo fue creciendo `react-task-app` por fases
+- Consultar ejemplos reales basados en tu propio repositorio
+- Tener una referencia rápida de conceptos, ramas y refactors
 
 ## 📖 Guías de Estudio
 
 Cada archivo es una lección independiente que puedes estudiar en orden:
 
-| #   | Archivo                                  | Tema                                           |
-| --- | ---------------------------------------- | ---------------------------------------------- |
-| 01  | [01-Intro.md](./01-Intro.md)             | Introducción a React y conceptos fundamentales |
-| 02  | [02-Estructura.md](./02-Estructura.md)   | Estructura del proyecto y carpetas             |
-| 03  | [03-Componentes.md](./03-Componentes.md) | Componentes funcionales y Props                |
-| 04  | [04-JSX.md](./04-JSX.md)                 | Sintaxis JSX y Fragments                       |
-| 05  | [05-EcmaScript.md](./05-EcmaScript.md)   | Import/Export y módulos ES6+                   |
-| 06  | [06-Props.md](./06-Props.md)             | Props profundo: tipos, validación, patrones    |
+| #   | Archivo | Tema |
+| --- | --- | --- |
+| 01 | [01-Intro.md](./01-Intro.md) | Introducción a React y conceptos fundamentales |
+| 02 | [02-Estructura.md](./02-Estructura.md) | Estructura del proyecto y carpetas |
+| 03 | [03-Componentes.md](./03-Componentes.md) | Componentes funcionales y Props |
+| 04 | [04-JSX.md](./04-JSX.md) | Sintaxis JSX y Fragments |
+| 05 | [05-EcmaScript.md](./05-EcmaScript.md) | Import/Export y módulos ES6+ |
+| 06 | [06-Props.md](./06-Props.md) | Props profundo: tipos, validación y patrones |
+| 07 | [07-Estilos.md](./07-Estilos.md) | Estilos en React |
+| 08 | [08-Tipos-de-Componentes.md](./08-Tipos-de-Componentes.md) | Tipos de componentes |
+| 09 | [09-Event-Handlers.md](./09-Event-Handlers.md) | Manejo de eventos |
+| 10 | [10-Fetch-API.md](./10-Fetch-API.md) | Consumo de APIs con Fetch |
+| 11 | [11-Third-Party-Modules-and-React-Icons copy.md](./11-Third-Party-Modules-and-React-Icons%20copy.md) | Módulos de terceros y React Icons |
+| 12 | [12-Arrays.md](./12-Arrays.md) | Renderizado y transformación de arrays |
+| 13 | [13-Hooks.md](./13-Hooks.md) | Introducción a los Hooks |
+| 14 | [14-UseState-Hooks.md](./14-UseState-Hooks.md) | `useState` en detalle |
+| 15 | [15-UseEffect-Hooks.md](./15-UseEffect-Hooks.md) | `useEffect` en detalle |
+| 16 | [16-Basic-TaskApp.md](./16-Basic-TaskApp.md) | Inicio del proyecto `react-task-app` |
+| 17 | [17-Lista-de-Tareas.md](./17-Lista-de-Tareas.md) | Primera lista dinámica con datos semilla |
+| 18 | [18-Agregar-Tarea-desde-Formulario.md](./18-Agregar-Tarea-desde-Formulario.md) | Formulario controlado y creación de tareas |
+| 19 | [19-Separacion-Componentes.md](./19-Separacion-Componentes.md) | Refactor y organización modular de componentes |
+| 20 | [20-UseContext.md](./20-UseContext.md) | Estado global con `Context API` |
+| 21 | [21-TailwindCss.md](./21-TailwindCss.md) | Fase Tailwind CSS documentada según estado real |
+| 22 | [22-Deploy-GitPages.md](./22-Deploy-GitPages.md) | Deploy manual y automático en GitHub Pages |
 
 ---
 
 ## 🎯 Cómo usar esta carpeta
 
-### 1️⃣ **Paso a Paso**
-Estudia las guías en orden (01 → 02 → 03...). Cada una construye sobre las anteriores.
+### 1️⃣ Paso a paso
 
-### 2️⃣ **Con Ejemplos**
-Todos los ejemplos usan código real del **TaskApp**. Sígue los ejemplos mientras lees.
+Estudia las guías en orden. A partir del tema `16`, además de teoría React, ya entras en la evolución real del proyecto `react-task-app` por ramas.
 
-### 3️⃣ **Consulta Rápida**
-Si olvidaste algo, usa los índices de contenidos para saltar a la sección que necesitas.
+### 2️⃣ Con ejemplos reales
 
-### 4️⃣ **Práctica**
-Después de leer cada guía, implementa lo aprendido en el código del TaskApp.
+Los temas avanzados usan código y decisiones tomadas dentro de tu propio repositorio, así que sirven como documentación viva del aprendizaje.
 
----
+### 3️⃣ Consulta rápida
 
-## 📋 Estructura de cada guía
+Si olvidaste un concepto, entra directamente al archivo correspondiente y usa su índice interno.
 
-Cada archivo `.md` contiene:
+### 4️⃣ Comparación con Git
 
-```markdown
-# Número - Tema
-
----
-## Índice de Contenidos
-(Enlaces navegables a cada sección)
-
----
-## ¿Qué es [Tema]?
-(Explicación conceptual)
-
-## Características/Conceptos
-(Detalles técnicos)
-
-## Ejemplos en TaskApp
-(Código práctico del proyecto)
-
-## 🚀 Siguientes temas
-(Qué aprender después)
-```
+Las fases `16` a `21` están especialmente pensadas para compararse con ramas concretas del proyecto y entender qué cambió en cada etapa.
 
 ---
 
-## 🎓 Nivel de Dificultad
+## 📋 Estructura habitual de cada guía
 
-| Guía           | Nivel          | Requisitos     |
-| -------------- | -------------- | -------------- |
-| 01-Intro       | 🟢 Principiante | Nada           |
-| 02-Estructura  | 🟢 Principiante | 01-Intro       |
-| 03-Componentes | 🟢 Principiante | 02-Estructura  |
-| 04-JSX         | 🟢 Principiante | 03-Componentes |
-| 05-EcmaScript  | 🟡 Intermedio   | 04-JSX         |
-| 06-Props       | 🟡 Intermedio   | 05-EcmaScript  |
-| 07-State       | 🟡 Intermedio   | 06-Props       |
-| 08-Hooks       | 🟡 Intermedio   | 07-State       |
-| 09-Context     | 🔴 Avanzado     | 08-Hooks       |
-| 10-Formularios | 🔴 Avanzado     | 09-Context     |
+Cada archivo suele incluir:
+
+- introducción conceptual
+- objetivos del tema
+- estado real del código o de la fase
+- explicación de la arquitectura o del flujo
+- aprendizajes clave
+- siguiente paso recomendado
+
+---
+
+## 🎓 Niveles aproximados
+
+| Bloque | Nivel |
+| --- | --- |
+| 01 → 06 | 🟢 Principiante |
+| 07 → 12 | 🟡 Intermedio |
+| 13 → 15 | 🟡 Intermedio / Avanzado |
+| 16 → 21 | 🟠 Práctica guiada sobre proyecto real |
 
 ---
 
 ## 📚 Otras carpetas relacionadas
 
-- **[arquitecture.md](../arquitecture.md)** - Arquitectura completa del proyecto
-- **[dev-flow.yaml](../dev-flow.yaml)** - Flujo de desarrollo
-- **[notes/](../notes/)** - Preguntas y apuntes personales
-- **[README.md](../../README.md)** - Visión general del proyecto
+- `src/Learning/` - ejemplos de práctica y aprendizaje base
+- `src/Projects/react-task-app/` - proyecto práctico principal
+- `docs/` - documentación general del repositorio
+- `README.md` - visión general del proyecto
 
 ---
 
@@ -103,29 +103,25 @@ Cada archivo `.md` contiene:
 
 - [React Oficial Docs](https://react.dev)
 - [MDN - JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript/)
-- [ES6+ Cheatsheet](https://es6.io/)
-- [Create React App Docs](https://create-react-app.dev/)
+- [Vite Docs](https://vite.dev)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
 
 ---
 
 ## 📝 Notas
 
-- ✅ Todas las guías están enfocadas en **React Moderno** (Hooks, componentes funcionales)
-- ✅ Los ejemplos son específicos del **TaskApp**
-- ✅ Se actualiza constantemente con nuevos temas
-- ✅ Puedes contribuir con mejoras o sugerencias
+- Todas las guías están enfocadas en React moderno con componentes funcionales y Hooks.
+- Las fases `16` a `21` están alineadas con ramas reales de Git revisadas en el proyecto.
+- La fase `21` se documenta tal como está hoy: rama creada, pero todavía sin implementación Tailwind versionada.
+- Puedes seguir ampliando esta carpeta conforme avances con nuevas ramas o refactors.
 
 ---
 
-## 🚀 Roadmap de Guías Futuras
+## 🚀 Roadmap sugerido después de estas guías
 
-- [ ] 06-Props.md - Props profundo y validación
-- [ ] 07-State.md - useState y manejo de estado local
-- [ ] 08-Hooks.md - Hooks personalizados y useEffect
-- [ ] 09-Context.md - Context API y estado global
-- [ ] 10-Formularios.md - Formularios controlados y validation
-- [ ] 11-API.md - Fetch y consumo de APIs REST
-- [ ] 12-Performance.md - Optimización y memoización
-- [ ] 13-Testing.md - Testing con Jest y React Testing Library
-- [ ] 14-Router.md - React Router para navegación
-- [ ] 15-Deploy.md - Deploy en producción
+- mejorar estilos base de `react-task-app`
+- completar implementación real de Tailwind en la fase 21
+- revisar el doble `TaskContextProvider` actual
+- añadir persistencia con `localStorage` o backend
+- incorporar edición y completado de tareas
+- documentar futuras fases como `custom hooks`, `router` o mejoras de producción
