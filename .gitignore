@@ -1,0 +1,48 @@
+# Dependencies
+**/node_modules/
+.pnp
+.pnp.js
+.npm
+**/.npm-cache/
+
+# Build output
+
+**/build/
+**/out/
+**/.vite/
+coverage/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / OS
+.vscode/
+.idea/
+.vs/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# TypeScript / lint caches
+*.tsbuildinfo
+.cache/
+.eslintcache
+
+# Keep npm lockfiles tracked for CI reproducibility
+/package-lock.json
+!src/Projects/react-task-app/package-lock.json
+
+
+
+# Local helper file (not used by GitHub Actions)
+src/Projects/react-task-app/deploy.yaml
